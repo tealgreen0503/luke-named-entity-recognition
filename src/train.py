@@ -24,10 +24,8 @@ from src.word_tokenizer import AutoWordTokenizer
 def main():
     warnings.filterwarnings("ignore")
     load_dotenv()
-    config_file = Path(os.path.dirname(__file__)) / "config.yaml"
-    with open(config_file) as config_file:
-        config = yaml.safe_load(config_file)
-
+    with open(Path(os.path.dirname(__file__)) / "config.yaml") as f:
+        config = yaml.safe_load(f)
     set_seed(config["seed"])
 
     id2label = config["id2label"]
