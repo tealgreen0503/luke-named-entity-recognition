@@ -1,0 +1,10 @@
+__pycache__
+.env
+.python-version
+.venv
+.vscode
+data/*
+fine_tuned_models/*
+wandb
+
+!.gitkeep

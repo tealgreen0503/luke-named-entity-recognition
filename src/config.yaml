@@ -1,0 +1,72 @@
+project_name: "party-extraction-ja"
+
+run_name: &run_name "luke-base"
+
+seed: &seed 42
+
+path:
+  train: "data/train.json"
+  valid: "data/valid.json"
+  test: "data/test.json"
+  fine_tuned_model: "fine_tuned_models"
+
+id2label:
+  0: "O"
+  1: "人名"
+  2: "法人名"
+  3: "政治的組織名"
+  4: "その他の組織名"
+  5: "地名"
+  6: "施設名"
+  7: "製品名"
+  8: "イベント名"
+
+model_info:
+  pretrained_model_name_or_path: "studio-ousia/luke-japanese-base-lite"
+
+model_kwargs: {}
+
+tokenizer_kwargs:
+  task: "entity_span_classification"
+  max_entity_length: 256
+  max_mention_length: 16
+
+tokenization_kwargs:
+  padding: False
+  truncation: False
+  max_length: 512
+
+word_tokenizer_kwargs:
+  type: "sudachi"
+  dict: "full"
+  mode: "B"
+
+trainer:
+  evaluation_strategy: "epoch"
+  per_device_train_batch_size: 32
+  per_device_eval_batch_size: 32
+  gradient_accumulation_steps: 1
+  learning_rate: 3.0e-5
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  num_train_epochs: 5
+  lr_scheduler_type: "linear"
+  warmup_steps: 0
+  log_level: "warning"
+  logging_strategy: "steps"
+  logging_steps: 50
+  save_strategy: "epoch"
+  save_total_limit: 1
+  seed: *seed
+  data_seed: *seed
+  bf16: True
+  dataloader_num_workers: 4
+  run_name: *run_name
+  disable_tqdm: False
+  load_best_model_at_end: True
+  metric_for_best_model: "f1"
+  greater_is_better: True
+  optim: "adamw_torch"
+  group_by_length: False
+  report_to: "wandb"
+  full_determinism: False
