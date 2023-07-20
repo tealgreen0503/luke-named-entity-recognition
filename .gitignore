@@ -6,5 +6,6 @@ __pycache__
 data/*
 fine_tuned_models/*
 wandb
+*.lock
 
 !.gitkeep
