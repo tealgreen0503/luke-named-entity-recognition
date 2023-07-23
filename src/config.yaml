@@ -60,6 +60,7 @@ trainer:
   save_total_limit: 1
   seed: *seed
   data_seed: *seed
+  bf16: True
   dataloader_num_workers: 4
   run_name: *run_name
   disable_tqdm: False
