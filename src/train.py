@@ -58,9 +58,9 @@ def main():
         **config["model_kwargs"],
     )
 
-    temp_dir = "temp"
+    tmp_dir = "tmp"
     training_args = TrainingArguments(
-        output_dir=temp_dir,
+        output_dir=tmp_dir,
         **config["trainer"],
     )
     trainer = Trainer(
@@ -75,7 +75,7 @@ def main():
     )
 
     trainer.train()
-    shutil.rmtree(temp_dir)
+    shutil.rmtree(tmp_dir)
 
     eval_metrics = trainer.evalueate()
     print(pd.DataFrame(eval_metrics, index=[0]))

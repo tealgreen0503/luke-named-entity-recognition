@@ -5,6 +5,7 @@ __pycache__
 .vscode
 data/*
 fine_tuned_models/*
+tmp
 wandb
 *.lock
 
