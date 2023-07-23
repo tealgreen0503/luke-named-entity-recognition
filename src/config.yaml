@@ -42,6 +42,7 @@ word_tokenizer_kwargs:
   mode: "B"
 
 trainer:
+  output_dir: "tmp"
   evaluation_strategy: "epoch"
   per_device_train_batch_size: 32
   per_device_eval_batch_size: 32

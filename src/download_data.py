@@ -31,9 +31,11 @@ def download_data(valid_size: float = 0.1, test_size: float = 0.2, seed: int = 4
         )
     df = pd.DataFrame(data_list)
 
-    train_df, test_df = train_test_split(df, test_size=test_size, random_state=seed, stratify=df["is_labeled"])
+    train_df, test_df = train_test_split(
+        df, test_size=test_size, random_state=seed, shuffle=True, stratify=df["is_labeled"]
+    )
     train_df, valid_df = train_test_split(
-        train_df, test_size=valid_size, random_state=seed, stratify=train_df["is_labeled"]
+        train_df, test_size=valid_size, random_state=seed, shuffle=True, stratify=train_df["is_labeled"]
     )
     os.makedirs(data_path, exist_ok=True)
     train_df.drop(columns="is_labeled").to_json(train_path, orient="records", force_ascii=False, indent=2)
