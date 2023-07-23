@@ -54,7 +54,6 @@ def main():
         num_labels=len(id2label),
         id2label=id2label,
         label2id=label2id,
-        torch_dtype=torch.bfloat16,
         **config["model_kwargs"],
     )
 
