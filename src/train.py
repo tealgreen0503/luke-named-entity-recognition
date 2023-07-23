@@ -74,7 +74,7 @@ def main():
     trainer.train()
     shutil.rmtree(config["trainer"]["output_dir"])
 
-    eval_metrics = trainer.evalueate()
+    eval_metrics = trainer.evaluate()
     print(pd.DataFrame(eval_metrics, index=[0]))
 
     trainer.compute_metrics = get_metrics_function(test_dataset, id2label)
