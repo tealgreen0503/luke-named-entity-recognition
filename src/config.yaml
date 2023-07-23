@@ -8,7 +8,7 @@ path:
   train: "data/train.json"
   valid: "data/valid.json"
   test: "data/test.json"
-  fine_tuned_model: "fine_tuned_models"
+  fine_tuned_models: "fine_tuned_models"
 
 id2label:
   0: "O"
