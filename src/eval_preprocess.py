@@ -115,6 +115,7 @@ def convert_probabilities_to_iob2_predictions(
         start_position = prediction["start"]
         end_position = prediction["end"]
         label = id2label[prediction["label"]]
+        # 予測対象のスパンの文字が全て`NON_ENTITY`であるとき、予測結果を反映する
         if all([tag == NON_ENTITY for tag in iob2_predictions[start_position:end_position]]):
             iob2_predictions[start_position] = f"B-{label}"
             span_length = end_position - start_position
