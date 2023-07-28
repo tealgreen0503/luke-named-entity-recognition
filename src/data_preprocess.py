@@ -114,7 +114,7 @@ def create_entity_spans(
     text: str,
     label_spans: list[LabelSpan],
 ) -> tuple[list[list[EntitySpan]], list[int], list[str], list[list[LabelSpan]]]:
-    """任意の方法で分割したテキストからentity_spansを作成する"""
+    """word_spansの始点と終点を組み合わせてentity_spansを作成する"""
 
     max_entity_length = tokenizer.max_entity_length
     max_mention_length = tokenizer.max_mention_length
